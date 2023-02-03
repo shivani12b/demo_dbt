@@ -24,4 +24,4 @@ customers as (
   from customers left join orders using (customer_id)
 )
 
-select * from customer_orders ;
+select * from customer_orders
