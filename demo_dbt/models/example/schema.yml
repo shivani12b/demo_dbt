@@ -19,3 +19,13 @@ models:
         tests:
           - unique
           - not_null
+
+  - name: customers
+    description: "A starter dbt model"
+    columns:
+            - name: customer_id
+            - name: first_name
+            - name: last_name
+            - name: first_order_date
+            - name: recent_order_date
+            - name: order_count

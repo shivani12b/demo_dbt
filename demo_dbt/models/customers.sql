@@ -1,5 +1,3 @@
-{{ config(schema='jaffle_shop') }}
-
 with orders as (
   select user_id as customer_id,
   min(order_date) as min_date,
@@ -17,8 +15,8 @@ customers as (
 ),
   customer_orders as (
   select
-  customers.first_name  as first_name,
-  customers.last_name as last_name ,
+  customers.first_name ,
+  customers.last_name,
   customers.customer_id as customer_id,
   orders.min_date as first_order_date,
   orders.max_date as recent_order_date,
