@@ -22,5 +22,8 @@ require-dbt-version: [">=1.0.0", "<2.0.0"]
 
 models:
   my_dbt_model:
-    example:
+    staging:
+      schema: 'staging'
       materialized: view
+    dim:
+      materialized: table

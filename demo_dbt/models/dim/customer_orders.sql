@@ -1,17 +1,20 @@
-with orders as (
-  select user_id as customer_id,
-  min(order_date) as min_date,
-  max(order_date) as max_date,
-  count(id) as order_count
-  from jaffle_shop.orders
-  group by user_id
+{{ config(materialized='table') }}
+
+with customers as (
+
+    select * from {{ ref('stg_customers') }}
+
 ),
-customers as (
-  select
-  id as customer_id,
-  first_name,
-  last_name
-  from jaffle_shop.customers
+orders as (
+
+    select
+    customer_id,
+    min(order_date) as min_date,
+    max(order_date) as max_date,
+    count(order_id) as order_count
+    from {{ ref('stg_orders') }}
+    group by 1
+
 ),
   customer_orders as (
   select
