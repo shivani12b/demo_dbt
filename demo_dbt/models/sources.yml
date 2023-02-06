@@ -1,0 +1,40 @@
+version: 2
+
+sources:
+  - name: jaffle_shop
+    description: A replica of the database used to power the jaffle_shop app.
+    tables:
+      - name: customers
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+
+      - name: orders
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
+
+          - name: user_id
+            description: Foreign key to customers
+
+          - name: status
+            tests:
+              - accepted_values:
+                  values: ['placed', 'shipped', 'completed', 'return_pending', 'returned']
+
+  - name: stripe
+    description: A replica of the database used to power the jaffle_shop app.
+    tables:
+      - name: payment
+        columns:
+          - name: id
+            description: Primary key of the table
+            tests:
+              - unique
+              - not_null
