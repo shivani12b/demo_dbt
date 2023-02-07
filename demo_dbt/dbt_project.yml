@@ -3,7 +3,7 @@ name: 'my_dbt_model'
 config-version: 2
 version: '0.1'
 
-profile: 'profiles'
+profile: 'demo_dbt'
 
 model-paths: ["models"]
 seed-paths: ["seeds"]
